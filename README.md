@@ -2,8 +2,6 @@
 
 Opis naloge
 
-Pri izdelavi seminarske naloge uporabite tehnologije, ki smo jih spoznali na laboratorijskih vajah. Informacijski sistem sestoji iz spletne aplikacije, spletne storitve, podatkovne baze in Android odjemalca. Spletni del rešitve mora biti objavljen na javno dostopnem spletnem strežniku oziroma platformi PaaS (npr. Microsoft Azure oblak, ki ga bomo spoznali na vajah), prav tako je potrebno oddati poročilo o seminarski nalogi.
-
 Z informacijskim sistemom E-Knjižnica bomo podprli procese na knjižnici. Sistem bo omogočal pregled gradiva knjižnice, opis gradiva, izposojo in rezervacijo gradiva ter pogled nad izposojenimi gradivi od datuma vračila do podaljšanja istega datuma.
 Sam informacijski sistem je razdeljen na spetno aplikacijo, spletne storitve, podatkono bazo in android aplikacijo. Spletna aplikacija in android aplikacija bosta dovolili uporabnikim dovolia dostop do IS, medtem ko bosta spletna storitev in podatkovna baza usposabljala sam sistem.
 
