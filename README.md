@@ -1,7 +1,6 @@
 # E-knijiznica
 
 Opis naloge
-Oddajte opis problemske domene, ki jo boste podprli z informacijskim sistemom. V besedilu definirajte tudi osebi, ki izdelujeta seminarsko. Predlog teme naj odda le en član skupine. Opis naj vsebuje do 500 besed. V kolikor tema ni primerna oziroma jo bo potrebno razširiti, boste obveščeni v odzivu na oddajo.
 
 Pri izdelavi seminarske naloge uporabite tehnologije, ki smo jih spoznali na laboratorijskih vajah. Informacijski sistem sestoji iz spletne aplikacije, spletne storitve, podatkovne baze in Android odjemalca. Spletni del rešitve mora biti objavljen na javno dostopnem spletnem strežniku oziroma platformi PaaS (npr. Microsoft Azure oblak, ki ga bomo spoznali na vajah), prav tako je potrebno oddati poročilo o seminarski nalogi.
 
