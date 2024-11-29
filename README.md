@@ -1,6 +1,7 @@
 # E-knijiznica
 
-63210045 Rok Cigut
+Avtorja:\
+63210045 Rok Cigut\
 63230121 Nik Janoš
 
 Opis naloge
