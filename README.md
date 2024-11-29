@@ -1,5 +1,8 @@
 # E-knijiznica
 
+63210045 Rok Cigut
+63230121 Nik Janoš
+
 Opis naloge
 
 Z informacijskim sistemom E-Knjižnica bomo podprli procese na knjižnici. Sistem bo omogočal pregled gradiva knjižnice, opis gradiva, izposojo in rezervacijo gradiva ter pogled nad izposojenimi gradivi od datuma vračila do podaljšanja istega datuma.
