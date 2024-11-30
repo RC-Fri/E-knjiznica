@@ -9,14 +9,12 @@ public class LibraryContext : IdentityDbContext<ApplicationUser>
     {
 
     }
-    public DbSet<Course> Courses { get; set; }
-    public DbSet<Enrollment> Enrollments { get; set; }
-    public DbSet<Student> Students { get; set; }
+    public DbSet<Material> Materials { get; set; }
+    public DbSet<Member> Members { get; set; }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
-        modelBuilder.Entity<Course>().ToTable("Course");
-        modelBuilder.Entity<Enrollment>().ToTable("Enrollment");
-        modelBuilder.Entity<Student>().ToTable("Student");
+        modelBuilder.Entity<Material>().ToTable("Material");
+        modelBuilder.Entity<Member>().ToTable("Member");
     }
 }
