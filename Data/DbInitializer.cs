@@ -4,61 +4,49 @@ using System;
 using System.Linq;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.Identity.Client.Platforms.Features.DesktopOs.Kerberos;
+using NuGet.Configuration;
 
 namespace E_knjiznica.Data;
 
 public static class DbInitializer
 {
-    public static void Initialize(SchoolContext context)
+    public static void Initialize(LibraryContext context)
     {
         context.Database.EnsureCreated();
-        // Look for any students.
-        if (context.Students.Any())
+        // Look for any members.
+        if (context.Members.Any())
         {
             return;   // DB has been seeded
         }
-        var students = new Student[]
+        var members = new Member[]
         {
-            new Student{FirstMidName="Carson",LastName="Alexander",EnrollmentDate=DateTime.Parse("2019-09-01")},
-            new Student{FirstMidName="Meredith",LastName="Alonso",EnrollmentDate=DateTime.Parse("2017-09-01")},
-            new Student{FirstMidName="Arturo",LastName="Anand",EnrollmentDate=DateTime.Parse("2018-09-01")},
-            new Student{FirstMidName="Gytis",LastName="Barzdukas",EnrollmentDate=DateTime.Parse("2017-09-01")},
-            new Student{FirstMidName="Yan",LastName="Li",EnrollmentDate=DateTime.Parse("2017-09-01")},
-            new Student{FirstMidName="Peggy",LastName="Justice",EnrollmentDate=DateTime.Parse("2016-09-01")},
-            new Student{FirstMidName="Laura",LastName="Norman",EnrollmentDate=DateTime.Parse("2018-09-01")},
-            new Student{FirstMidName="Nino",LastName="Olivetto",EnrollmentDate=DateTime.Parse("2019-09-01")}
+            new Member{FirstMidName="Carson",LastName="Alexander",MembershipDate=DateTime.Parse("2019-09-01"), Credentials="password"},
+            new Member{FirstMidName="Meredith",LastName="Alonso",MembershipDate=DateTime.Parse("2017-09-01"), Credentials="password"},
+            new Member{FirstMidName="Arturo",LastName="Anand",MembershipDate=DateTime.Parse("2018-09-01"), Credentials="password"},
+            new Member{FirstMidName="Gytis",LastName="Barzdukas",MembershipDate=DateTime.Parse("2017-09-01"), Credentials="password"},
+            new Member{FirstMidName="Yan",LastName="Li",MembershipDate=DateTime.Parse("2017-09-01"), Credentials="password"},
+            new Member{FirstMidName="Peggy",LastName="Justice",MembershipDate=DateTime.Parse("2016-09-01"), Credentials="password"},
+            new Member{FirstMidName="Laura",LastName="Norman",MembershipDate=DateTime.Parse("2018-09-01"), Credentials="password"},
+            new Member{FirstMidName="Nino",LastName="Olivetto",MembershipDate=DateTime.Parse("2019-09-01"), Credentials="password"}
         };
-        context.Students.AddRange(students);
+        context.Members.AddRange(members);
         context.SaveChanges();
-        var courses = new Course[]
+
+        var materials = new Material[]
         {
-            new Course{CourseID=1050,Title="Chemistry",Credits=3},
-            new Course{CourseID=4022,Title="Microeconomics",Credits=3},
-            new Course{CourseID=4041,Title="Macroeconomics",Credits=3},
-            new Course{CourseID=1045,Title="Calculus",Credits=4},
-            new Course{CourseID=3141,Title="Trigonometry",Credits=4},
-            new Course{CourseID=2021,Title="Composition",Credits=3},
-            new Course{CourseID=2042,Title="Literature",Credits=4}
+            new Material{MaterialID=1050,Title="Chemistry"},
+            new Material{MaterialID=4022,Title="Microeconomics"},
+            new Material{MaterialID=4041,Title="Macroeconomics"},
+            new Material{MaterialID=1045,Title="Calculus"},
+            new Material{MaterialID=3141,Title="Trigonometry"},
+            new Material{MaterialID=2021,Title="Composition"},
+            new Material{MaterialID=2042,Title="Literature"}
         };
-        context.Courses.AddRange(courses);
+        context.Materials.AddRange(materials);
         context.SaveChanges();
-        var enrollments = new Enrollment[]
-        {
-            new Enrollment{StudentID=1,CourseID=1050,Grade=Grade.A},
-            new Enrollment{StudentID=1,CourseID=4022,Grade=Grade.C},
-            new Enrollment{StudentID=1,CourseID=4041,Grade=Grade.B},
-            new Enrollment{StudentID=2,CourseID=1045,Grade=Grade.B},
-            new Enrollment{StudentID=2,CourseID=3141,Grade=Grade.F},
-            new Enrollment{StudentID=2,CourseID=2021,Grade=Grade.F},
-            new Enrollment{StudentID=3,CourseID=1050},
-            new Enrollment{StudentID=4,CourseID=1050},
-            new Enrollment{StudentID=4,CourseID=4022,Grade=Grade.F},
-            new Enrollment{StudentID=5,CourseID=4041,Grade=Grade.C},
-            new Enrollment{StudentID=6,CourseID=1045},
-            new Enrollment{StudentID=7,CourseID=3141,Grade=Grade.A},
-        };
-        context.Enrollments.AddRange(enrollments);
-            var roles = new IdentityRole[] {
+
+        var roles = new IdentityRole[] {
             new IdentityRole{Id="1", Name="Administrator"},
             new IdentityRole{Id="2", Name="Manager"},
             new IdentityRole{Id="3", Name="Staff"}
@@ -71,7 +59,6 @@ public static class DbInitializer
         {
             FirstName = "Bob",
             LastName = "Dilon",
-            City = "Ljubljana",
             Email = "bob@example.com",
             NormalizedEmail = "XXXX@EXAMPLE.COM",
             UserName = "bob@example.com",
