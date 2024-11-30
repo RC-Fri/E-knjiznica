@@ -1,4 +1,4 @@
-# E-knjznica
+# E-knjiznica
 
 Avtorja:\
 63210045 Rok Cigut\
