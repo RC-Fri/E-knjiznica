@@ -1,5 +1,7 @@
 using E_knjiznica.Data;
+using E_knjiznica.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,9 +11,17 @@ builder.Services.AddDbContext<LibraryContext>(options =>
 
 options.UseSqlServer(builder.Configuration.GetConnectionString("LibraryContext")));
 
+//builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<LibraryContext>();
+
+builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = false)
+    .AddRoles<IdentityRole>()
+    .AddEntityFrameworkStores<LibraryContext>();
+
 
 
 var app = builder.Build();
+
+app.MapRazorPages();
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

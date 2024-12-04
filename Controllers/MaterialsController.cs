@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using E_knjiznica.Data;
 using E_knjiznica.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace E_knjiznica.Controllers
 {
+    [Authorize]
     public class MaterialsController : Controller
     {
         private readonly LibraryContext _context;
