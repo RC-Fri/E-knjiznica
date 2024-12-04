@@ -1,13 +1,38 @@
-using System;
-using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace E_knjiznica.Models;
 public class Member
-{
-    public int ID { get; set; }
-    public string? LastName { get; set; }
-    public string? FirstMidName { get; set; }
-    public DateTime MembershipDate { get; set; }
-    public string? Credentials {get; set;}
+    {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int MemberID { get; set; }
 
-}
+        [Required]
+        [MaxLength(50)]
+        public string FirstMidName { get; set; }
+
+        [Required]
+        [MaxLength(50)]
+        public string LastName { get; set; }
+
+        [Required]
+        [MaxLength(100)]
+        [EmailAddress]
+        public string Email { get; set; }
+
+        [MaxLength(15)]
+        public string PhoneNumber { get; set; }
+
+        public DateTime? MembershipDate { get; set; }
+
+        [ForeignKey("Subsidiary")]
+        public int? SubsidiaryID { get; set; }
+
+        [Required]
+        [MaxLength(50)]
+        public string Username { get; set; }
+
+        [Required]
+        public string Credentials { get; set; }
+    }

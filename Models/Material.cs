@@ -1,15 +1,25 @@
-using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace E_knjiznica.Models;
-public class Material
+namespace E_knjiznica.Models
 {
-    [DatabaseGenerated(DatabaseGeneratedOption.None)]
-    public int MaterialID { get; set; }
     
-    public ApplicationUser? Borrower { get; set; }
+public class Material
+    {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int MaterialID { get; set; }
 
-    public DateTime? DateCreated { get; set; }
+        [Required]
+        [MaxLength(100)]
+        public string Title { get; set; }
 
-    public string? Title { get; set; }
+        [MaxLength(50)]
+        public string Genre { get; set; }
+
+        public int? PublicationYear { get; set; }
+
+        [ForeignKey("Author")]
+        public int AuthorID { get; set; }
+    }
 }
