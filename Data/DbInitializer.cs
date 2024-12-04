@@ -15,100 +15,6 @@ public static class DbInitializer
             return;   // DB has been seeded
         }
         //TODO: Add hash
-        var members = new Member[]
-        {
-            new Member
-            {
-                FirstMidName = "Carson",
-                LastName = "Alexander",
-                Email = "carson.alexander@example.com",
-                PhoneNumber = "1234567890",
-                MembershipDate = DateTime.Parse("2019-09-01"),
-                SubsidiaryID = 1,
-                Username = "carson.alexander",
-                Credentials = "password"
-            },
-            new Member
-            {
-                FirstMidName = "Meredith",
-                LastName = "Alonso",
-                Email = "meredith.alonso@example.com",
-                PhoneNumber = "1234567891",
-                MembershipDate = DateTime.Parse("2017-09-01"),
-                SubsidiaryID = 2,
-                Username = "meredith.alonso",
-                Credentials = "password"
-            },
-            new Member
-            {
-                FirstMidName = "Arturo",
-                LastName = "Anand",
-                Email = "arturo.anand@example.com",
-                PhoneNumber = "1234567892",
-                MembershipDate = DateTime.Parse("2018-09-01"),
-                SubsidiaryID = 1,
-                Username = "arturo.anand",
-                Credentials = "password"
-            },
-            new Member
-            {
-                FirstMidName = "Gytis",
-                LastName = "Barzdukas",
-                Email = "gytis.barzdukas@example.com",
-                PhoneNumber = "1234567893",
-                MembershipDate = DateTime.Parse("2017-09-01"),
-                SubsidiaryID = 3,
-                Username = "gytis.barzdukas",
-                Credentials = "password"
-            },
-            new Member
-            {
-                FirstMidName = "Yan",
-                LastName = "Li",
-                Email = "yan.li@example.com",
-                PhoneNumber = "1234567894",
-                MembershipDate = DateTime.Parse("2017-09-01"),
-                SubsidiaryID = 2,
-                Username = "yan.li",
-                Credentials = "password"
-            },
-            new Member
-            {
-                FirstMidName = "Peggy",
-                LastName = "Justice",
-                Email = "peggy.justice@example.com",
-                PhoneNumber = "1234567895",
-                MembershipDate = DateTime.Parse("2016-09-01"),
-                SubsidiaryID = 1,
-                Username = "peggy.justice",
-                Credentials = "password"
-            },
-            new Member
-            {
-                FirstMidName = "Laura",
-                LastName = "Norman",
-                Email = "laura.norman@example.com",
-                PhoneNumber = "1234567896",
-                MembershipDate = DateTime.Parse("2018-09-01"),
-                SubsidiaryID = 3,
-                Username = "laura.norman",
-                Credentials = "password"
-            },
-            new Member
-            {
-                FirstMidName = "Nino",
-                LastName = "Olivetto",
-                Email = "nino.olivetto@example.com",
-                PhoneNumber = "1234567897",
-                MembershipDate = DateTime.Parse("2019-09-01"),
-                SubsidiaryID = 2,
-                Username = "nino.olivetto",
-                Credentials = "password"
-            }
-        };
-        context.Members.AddRange(members);
-        context.SaveChanges();
-
         var authors = new Author[]
         {
             new Author
@@ -257,6 +163,100 @@ public static class DbInitializer
         context.Subsidiaries.AddRange(subsidiaries);
         context.SaveChanges();
 
+        var members = new Member[]
+        {
+            new Member
+            {
+                FirstMidName = "Carson",
+                LastName = "Alexander",
+                Email = "carson.alexander@example.com",
+                PhoneNumber = "1234567890",
+                MembershipDate = DateTime.Parse("2019-09-01"),
+                SubsidiaryID = 1,
+                Username = "carson.alexander",
+                Credentials = "password"
+            },
+            new Member
+            {
+                FirstMidName = "Meredith",
+                LastName = "Alonso",
+                Email = "meredith.alonso@example.com",
+                PhoneNumber = "1234567891",
+                MembershipDate = DateTime.Parse("2017-09-01"),
+                SubsidiaryID = 2,
+                Username = "meredith.alonso",
+                Credentials = "password"
+            },
+            new Member
+            {
+                FirstMidName = "Arturo",
+                LastName = "Anand",
+                Email = "arturo.anand@example.com",
+                PhoneNumber = "1234567892",
+                MembershipDate = DateTime.Parse("2018-09-01"),
+                SubsidiaryID = 1,
+                Username = "arturo.anand",
+                Credentials = "password"
+            },
+            new Member
+            {
+                FirstMidName = "Gytis",
+                LastName = "Barzdukas",
+                Email = "gytis.barzdukas@example.com",
+                PhoneNumber = "1234567893",
+                MembershipDate = DateTime.Parse("2017-09-01"),
+                SubsidiaryID = 3,
+                Username = "gytis.barzdukas",
+                Credentials = "password"
+            },
+            new Member
+            {
+                FirstMidName = "Yan",
+                LastName = "Li",
+                Email = "yan.li@example.com",
+                PhoneNumber = "1234567894",
+                MembershipDate = DateTime.Parse("2017-09-01"),
+                SubsidiaryID = 2,
+                Username = "yan.li",
+                Credentials = "password"
+            },
+            new Member
+            {
+                FirstMidName = "Peggy",
+                LastName = "Justice",
+                Email = "peggy.justice@example.com",
+                PhoneNumber = "1234567895",
+                MembershipDate = DateTime.Parse("2016-09-01"),
+                SubsidiaryID = 1,
+                Username = "peggy.justice",
+                Credentials = "password"
+            },
+            new Member
+            {
+                FirstMidName = "Laura",
+                LastName = "Norman",
+                Email = "laura.norman@example.com",
+                PhoneNumber = "1234567896",
+                MembershipDate = DateTime.Parse("2018-09-01"),
+                SubsidiaryID = 3,
+                Username = "laura.norman",
+                Credentials = "password"
+            },
+            new Member
+            {
+                FirstMidName = "Nino",
+                LastName = "Olivetto",
+                Email = "nino.olivetto@example.com",
+                PhoneNumber = "1234567897",
+                MembershipDate = DateTime.Parse("2019-09-01"),
+                SubsidiaryID = 2,
+                Username = "nino.olivetto",
+                Credentials = "password"
+            }
+        };
+        context.Members.AddRange(members);
+        context.SaveChanges();
+
         var loans = new Loan[]
         {
             new Loan
@@ -327,11 +327,11 @@ public static class DbInitializer
 
         context.Loans.AddRange(loans);
         context.SaveChanges();
-
+        
         var roles = new IdentityRole[] {
-            new IdentityRole{Id="1", Name="Administrator"},
-            new IdentityRole{Id="2", Name="Manager"},
-            new IdentityRole{Id="3", Name="Staff"}
+        new IdentityRole{Id="1", Name="Administrator"},
+        new IdentityRole{Id="2", Name="Manager"},
+        new IdentityRole{Id="3", Name="Staff"}
         };
         foreach (IdentityRole r in roles)
         {
