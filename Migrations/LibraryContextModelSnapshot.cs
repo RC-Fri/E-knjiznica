@@ -96,50 +96,160 @@ namespace E_knjiznica.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
-            modelBuilder.Entity("E_knjiznica.Models.Material", b =>
+            modelBuilder.Entity("E_knjiznica.Models.Author", b =>
                 {
+                    b.Property<int>("AuthorID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("AuthorID"));
+
+                    b.Property<DateTime?>("DateOfBirth")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.HasKey("AuthorID");
+
+                    b.ToTable("Author", (string)null);
+                });
+
+            modelBuilder.Entity("E_knjiznica.Models.Loan", b =>
+                {
+                    b.Property<int>("LoanID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("LoanID"));
+
+                    b.Property<DateTime?>("DueDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("LoanDate")
+                        .HasColumnType("datetime2");
+
                     b.Property<int>("MaterialID")
                         .HasColumnType("int");
 
-                    b.Property<string>("BorrowerId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("MemberID")
+                        .HasColumnType("int");
 
-                    b.Property<DateTime?>("DateCreated")
+                    b.Property<DateTime?>("ReturnDate")
                         .HasColumnType("datetime2");
 
+                    b.HasKey("LoanID");
+
+                    b.ToTable("Loan", (string)null);
+                });
+
+            modelBuilder.Entity("E_knjiznica.Models.Material", b =>
+                {
+                    b.Property<int>("MaterialID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MaterialID"));
+
+                    b.Property<int>("AuthorID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Genre")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<int?>("PublicationYear")
+                        .HasColumnType("int");
+
                     b.Property<string>("Title")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.HasKey("MaterialID");
-
-                    b.HasIndex("BorrowerId");
 
                     b.ToTable("Material", (string)null);
                 });
 
             modelBuilder.Entity("E_knjiznica.Models.Member", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<int>("MemberID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MemberID"));
 
                     b.Property<string>("Credentials")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("FirstMidName")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("LastName")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
-                    b.Property<DateTime>("MembershipDate")
+                    b.Property<DateTime?>("MembershipDate")
                         .HasColumnType("datetime2");
 
-                    b.HasKey("ID");
+                    b.Property<string>("PhoneNumber")
+                        .IsRequired()
+                        .HasMaxLength(15)
+                        .HasColumnType("nvarchar(15)");
+
+                    b.Property<int?>("SubsidiaryID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Username")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.HasKey("MemberID");
+
+                    b.HasIndex("SubsidiaryID");
 
                     b.ToTable("Member", (string)null);
+                });
+
+            modelBuilder.Entity("E_knjiznica.Models.Subsidiary", b =>
+                {
+                    b.Property<int>("SubsidiaryID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SubsidiaryID"));
+
+                    b.Property<string>("Location")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.HasKey("SubsidiaryID");
+
+                    b.ToTable("Subsidiary", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -275,13 +385,11 @@ namespace E_knjiznica.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("E_knjiznica.Models.Material", b =>
+            modelBuilder.Entity("E_knjiznica.Models.Member", b =>
                 {
-                    b.HasOne("E_knjiznica.Models.ApplicationUser", "Borrower")
-                        .WithMany()
-                        .HasForeignKey("BorrowerId");
-
-                    b.Navigation("Borrower");
+                    b.HasOne("E_knjiznica.Models.Subsidiary", null)
+                        .WithMany("Members")
+                        .HasForeignKey("SubsidiaryID");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -333,6 +441,11 @@ namespace E_knjiznica.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("E_knjiznica.Models.Subsidiary", b =>
+                {
+                    b.Navigation("Members");
                 });
 #pragma warning restore 612, 618
         }
