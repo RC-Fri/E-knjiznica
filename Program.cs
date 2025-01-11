@@ -9,7 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<LibraryContext>(options =>
 
-options.UseSqlServer(builder.Configuration.GetConnectionString("LibraryContext")));
+options.UseSqlServer(builder.Configuration.GetConnectionString("AzureContext")));
 
 //builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<LibraryContext>();
 
