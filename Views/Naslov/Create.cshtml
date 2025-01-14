@@ -1,0 +1,43 @@
+@model NASLOV
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>NASLOV</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Postna_stevilka" class="control-label"></label>
+                <select asp-for="Postna_stevilka" class ="form-control" asp-items="ViewBag.Postna_stevilka"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Ulica" class="control-label"></label>
+                <input asp-for="Ulica" class="form-control" />
+                <span asp-validation-for="Ulica" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Hisna_stevilka" class="control-label"></label>
+                <input asp-for="Hisna_stevilka" class="form-control" />
+                <span asp-validation-for="Hisna_stevilka" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ID_osebe" class="control-label"></label>
+                <select asp-for="ID_osebe" class ="form-control" asp-items="ViewBag.ID_osebe"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

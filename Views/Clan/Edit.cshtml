@@ -1,0 +1,51 @@
+@model CLAN
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>CLAN</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ID_osebe" />
+            <div class="form-group">
+                <label asp-for="ID_kategorija_clana" class="control-label"></label>
+                <select asp-for="ID_kategorija_clana" class="form-control" asp-items="ViewBag.ID_kategorija_clana"></select>
+                <span asp-validation-for="ID_kategorija_clana" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="GDPR" /> @Html.DisplayNameFor(model => model.GDPR)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="E_posta" class="control-label"></label>
+                <input asp-for="E_posta" class="form-control" />
+                <span asp-validation-for="E_posta" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Informiranje_preko_e_poste" /> @Html.DisplayNameFor(model => model.Informiranje_preko_e_poste)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="Konec_clanstva" class="control-label"></label>
+                <input asp-for="Konec_clanstva" class="form-control" />
+                <span asp-validation-for="Konec_clanstva" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
