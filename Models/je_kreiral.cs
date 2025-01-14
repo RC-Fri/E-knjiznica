@@ -4,11 +4,17 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 public class je_kreiral
 {
-    [Key, Column(Order = 0)]
+    [Key]
+    public int ID { get; set; }
+
+    [ForeignKey("Avtor")]
     public int ID_osebe { get; set; }
     public AVTOR Avtor { get; set; }
 
-    [Key, Column(Order = 1)]
+    [ForeignKey("Gradivo")]
     public int Inventarna_stevilka { get; set; }
     public GRADIVO Gradivo { get; set; }
+
+    [Required]
+    public DateTime Datum_kreiranja { get; set; }
 }

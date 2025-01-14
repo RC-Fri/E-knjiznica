@@ -7,12 +7,9 @@ public class KATEGORIJA_CLANA
     [Key]
     public int ID_kategorija_clana { get; set; }
 
-    [Required, StringLength(20)]
-    public string Naziv { get; set; }
-
-    [StringLength(40)]
+    [Required]
+    [StringLength(50)]
     public string Opis { get; set; }
 
-    [Column(TypeName = "decimal(8, 2)")]
-    public decimal Clanarina { get; set; }
+    public ICollection<CLAN> Clani { get; set; }
 }

@@ -7,9 +7,13 @@ public class OSEBA
     [Key]
     public int ID_osebe { get; set; }
 
-    [Required, StringLength(20)]
+    [Required]
+    [StringLength(50)]
     public string Ime { get; set; }
 
-    [Required, StringLength(20)]
+    [Required]
+    [StringLength(50)]
     public string Priimek { get; set; }
+
+    public CLAN Clan { get; set; }
 }

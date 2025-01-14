@@ -1,7 +1,6 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-
 public class OBDELAVA_GRADIV
 {
     [Key]
@@ -23,12 +22,11 @@ public class OBDELAVA_GRADIV
     public int ID_clan { get; set; }
     public CLAN Clan { get; set; }
 
-    [Required]
     public DateTime Datum_obdelave { get; set; }
 
     public DateTime? Datum_od { get; set; }
+
     public DateTime? Datum_do { get; set; }
 
-    [Column(TypeName = "decimal(8, 2)")]
     public decimal? Obracun { get; set; }
 }

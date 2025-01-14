@@ -8,16 +8,20 @@ public class ZAPOSLEN
     public int ID_osebe { get; set; }
     public OSEBA Oseba { get; set; }
 
-    [ForeignKey("FunkcijaZaposlenega")]
+    [ForeignKey("Funkcija")]
     public int ID_funkcija { get; set; }
-    public FUNKCIJA_ZAPOSLENEGA FunkcijaZaposlenega { get; set; }
+    public FUNKCIJA_ZAPOSLENEGA Funkcija { get; set; }
 
-    [Column(TypeName = "decimal(8, 2)")]
     public decimal Placa { get; set; }
 
-    [Required, StringLength(20)]
+    [Required]
+    [StringLength(20)]
     public string Uporabnisko_ime { get; set; }
 
-    [Required, StringLength(20)]
+    [Required]
+    [StringLength(20)]
     public string Geslo { get; set; }
+
+    public ICollection<dela_v> Dela_V { get; set; }
+    public ICollection<OBDELAVA_GRADIV> Obdelave { get; set; }
 }

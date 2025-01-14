@@ -23,9 +23,12 @@ public class GRADIVO
     public int ID_podruznice { get; set; }
     public PODRUZNICA Podruznica { get; set; }
 
-    [Required, StringLength(20)]
+    [Required]
+    [StringLength(20)]
     public string Naziv { get; set; }
 
     [Required]
     public DateTime Datum_izdaje { get; set; }
+
+    public ICollection<OBDELAVA_GRADIV> Obdelave { get; set; }
 }

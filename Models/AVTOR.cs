@@ -11,8 +11,9 @@ public class AVTOR
     [StringLength(20)]
     public string Pseudonim { get; set; }
 
-    [Required]
     public DateTime Datum_rojstva { get; set; }
 
     public DateTime? Datum_smrti { get; set; }
+
+    public ICollection<je_kreiral> Kreacije { get; set; }
 }

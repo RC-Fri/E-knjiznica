@@ -5,17 +5,25 @@ using Microsoft.EntityFrameworkCore;
 
 public class NASLOV
 {
-    [Key, Column(Order = 0, TypeName = "numeric(4)")]
-    public int Postna_stevilka { get; set; }
-    public POSTA Posta { get; set; }
+    [Key]
+    [Column(Order = 0)]
+    public string Postna_stevilka { get; set; }
 
-    [Key, Column(Order = 1), StringLength(20)]
+    [Key]
+    [Column(Order = 1)]
+    [StringLength(100)]
     public string Ulica { get; set; }
 
-    [Key, Column(Order = 2), StringLength(5)]
+    [Key]
+    [Column(Order = 2)]
+    [StringLength(10)]
     public string Hisna_stevilka { get; set; }
 
-    [ForeignKey("Clan")]
-    public int ID_osebe { get; set; }
+    public int? ID_osebe { get; set; }
+
+    [ForeignKey("Postna_stevilka")]
+    public POSTA Posta { get; set; }
+
+    [ForeignKey("ID_osebe")]
     public CLAN Clan { get; set; }
 }

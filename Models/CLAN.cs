@@ -21,4 +21,8 @@ public class CLAN
 
     [Required]
     public DateTime Konec_clanstva { get; set; }
+
+    public ICollection<NASLOV> Naslovi { get; set; }
+
+    public ICollection<OBDELAVA_GRADIV> Obdelave { get; set; }
 }

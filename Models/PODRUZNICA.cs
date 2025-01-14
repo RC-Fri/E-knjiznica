@@ -11,6 +11,8 @@ public class PODRUZNICA
     public int ID_tip_podruznice { get; set; }
     public TIP_PODRUZNICE TipPodruznice { get; set; }
 
-    [Required, StringLength(20)]
     public string Posta { get; set; }
+
+    public ICollection<GRADIVO> Gradiva { get; set; }
+    public ICollection<dela_v> Zaposleni { get; set; }
 }
