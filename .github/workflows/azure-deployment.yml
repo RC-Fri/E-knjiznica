@@ -1,0 +1,75 @@
+# Combined Workflow for Build and Deploy
+name: Build and deploy ASP.Net Core app to Azure Web App
+
+on:
+  push:
+    branches:
+      - main
+      - test
+  workflow_dispatch:
+
+permissions:
+  id-token: write
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up .NET Core
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.x'
+
+      - name: Build with dotnet
+        run: dotnet build --configuration Release
+
+      - name: dotnet publish
+        run: dotnet publish -c Release -o "${{env.DOTNET_ROOT}}/myapp"
+
+      - name: Upload artifact for deployment job
+        uses: actions/upload-artifact@v4
+        with:
+          name: .net-app
+          path: ${{env.DOTNET_ROOT}}/myapp
+
+  deploy:
+    runs-on: windows-latest
+    needs: build
+
+    steps:
+      - name: Download artifact from build job
+        uses: actions/download-artifact@v4
+        with:
+          name: .net-app
+
+      - name: Set Azure environment variables for correct secrets
+        id: set-azure-secrets
+        run: |
+          if ($env:GITHUB_REF -eq "refs/heads/main") {
+            echo "client_id=${{ secrets.AZUREAPPSERVICE_CLIENTID_7447879956B1404C94E12962BA098AE9 }}" >> $env:GITHUB_ENV
+            echo "tenant_id=${{ secrets.AZUREAPPSERVICE_TENANTID_2F2F5C67477943A7A20B4DC5BB62B32E }}" >> $env:GITHUB_ENV
+            echo "subscription_id=${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_AD96FD8160104DBD8C895B24BB1CFE98 }}" >> $env:GITHUB_ENV
+          }
+          else {
+            echo "client_id=${{ secrets.AZUREAPPSERVICE_CLIENTID_05F84865CB234165BC5A3F8806A996F1 }}" >> $env:GITHUB_ENV
+            echo "tenant_id=${{ secrets.AZUREAPPSERVICE_TENANTID_CD5DBFF7C5E849AD84079B6F3E0A0293 }}" >> $env:GITHUB_ENV
+            echo "subscription_id=${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_19A35575790740C69726DCFD08B51EDB }}" >> $env:GITHUB_ENV
+          }
+
+      - name: Login to Azure
+        uses: azure/login@v2
+        with:
+          client-id: ${{ env.client_id }}
+          tenant-id: ${{ env.tenant_id }}
+          subscription-id: ${{ env.subscription_id }}
+
+      - name: Deploy to Azure Web App
+        id: deploy-to-webapp
+        uses: azure/webapps-deploy@v3
+        with:
+          app-name: ${{ github.ref_name == 'main' && 'e-knjiznica-is' || 'e-knjiznica-is-dev' }}
+          slot-name: 'Production'
+          package: .
