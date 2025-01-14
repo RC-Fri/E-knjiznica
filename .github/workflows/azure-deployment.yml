@@ -45,15 +45,16 @@ jobs:
       - name: Set Azure environment variables for correct secrets
         id: set-azure-secrets
         run: |
-          if [ "${GITHUB_REF#refs/heads/}" == "main" ]; then
-            echo "client_id=${{ secrets.AZUREAPPSERVICE_CLIENTID_7447879956B1404C94E12962BA098AE9 }}" >> $GITHUB_ENV
-            echo "tenant_id=${{ secrets.AZUREAPPSERVICE_TENANTID_2F2F5C67477943A7A20B4DC5BB62B32E }}" >> $GITHUB_ENV
-            echo "subscription_id=${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_AD96FD8160104DBD8C895B24BB1CFE98 }}" >> $GITHUB_ENV
-          else
-            echo "client_id=${{ secrets.AZUREAPPSERVICE_CLIENTID_05F84865CB234165BC5A3F8806A996F1 }}" >> $GITHUB_ENV
-            echo "tenant_id=${{ secrets.AZUREAPPSERVICE_TENANTID_CD5DBFF7C5E849AD84079B6F3E0A0293 }}" >> $GITHUB_ENV
-            echo "subscription_id=${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_19A35575790740C69726DCFD08B51EDB }}" >> $GITHUB_ENV
-          fi
+          if ($env:GITHUB_REF -eq "refs/heads/main") {
+            echo "client_id=${{ secrets.AZUREAPPSERVICE_CLIENTID_7447879956B1404C94E12962BA098AE9 }}" >> $env:GITHUB_ENV
+            echo "tenant_id=${{ secrets.AZUREAPPSERVICE_TENANTID_2F2F5C67477943A7A20B4DC5BB62B32E }}" >> $env:GITHUB_ENV
+            echo "subscription_id=${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_AD96FD8160104DBD8C895B24BB1CFE98 }}" >> $env:GITHUB_ENV
+          }
+          else {
+            echo "client_id=${{ secrets.AZUREAPPSERVICE_CLIENTID_05F84865CB234165BC5A3F8806A996F1 }}" >> $env:GITHUB_ENV
+            echo "tenant_id=${{ secrets.AZUREAPPSERVICE_TENANTID_CD5DBFF7C5E849AD84079B6F3E0A0293 }}" >> $env:GITHUB_ENV
+            echo "subscription_id=${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_19A35575790740C69726DCFD08B51EDB }}" >> $env:GITHUB_ENV
+          }
 
       - name: Login to Azure
         uses: azure/login@v2
