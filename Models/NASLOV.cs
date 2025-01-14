@@ -1,6 +1,8 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
+
 public class NASLOV
 {
     [Key, Column(Order = 0, TypeName = "numeric(4)")]
