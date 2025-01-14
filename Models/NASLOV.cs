@@ -1,7 +1,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-public class Naslov
+public class NASLOV
 {
     [Key, Column(Order = 0, TypeName = "numeric(4)")]
     public int Postna_stevilka { get; set; }
