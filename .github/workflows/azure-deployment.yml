@@ -41,13 +41,13 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: .net-app
-      
-      - name: Login to Azure
+
+      - name: Login to Azure (main or test)
         uses: azure/login@v2
         with:
-          client-id: ${{ secrets[format('AZUREAPPSERVICE_CLIENTID_{0}', github.ref_name == 'main' ? '7447879956B1404C94E12962BA098AE9' : '05F84865CB234165BC5A3F8806A996F1')] }}
-          tenant-id: ${{ secrets[format('AZUREAPPSERVICE_TENANTID_{0}', github.ref_name == 'main' ? '2F2F5C67477943A7A20B4DC5BB62B32E' : 'CD5DBFF7C5E849AD84079B6F3E0A0293')] }}
-          subscription-id: ${{ secrets[format('AZUREAPPSERVICE_SUBSCRIPTIONID_{0}', github.ref_name == 'main' ? 'AD96FD8160104DBD8C895B24BB1CFE98' : '19A35575790740C69726DCFD08B51EDB')] }}
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_${{ github.ref_name == 'main' && '7447879956B1404C94E12962BA098AE9' || '05F84865CB234165BC5A3F8806A996F1' }} }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_${{ github.ref_name == 'main' && '2F2F5C67477943A7A20B4DC5BB62B32E' || 'CD5DBFF7C5E849AD84079B6F3E0A0293' }} }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_${{ github.ref_name == 'main' && 'AD96FD8160104DBD8C895B24BB1CFE98' || '19A35575790740C69726DCFD08B51EDB' }} }}
 
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
