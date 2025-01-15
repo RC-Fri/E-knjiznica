@@ -1,4 +1,4 @@
-@model OBDELAVA_GRADIV
+@model E_knjiznica.Models.OBDELAVA_GRADIV
 
 @{
     ViewData["Title"] = "Details";
@@ -25,6 +25,9 @@
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Zaposlen)
         </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Zaposlen.ID_osebe)
+        </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Clan)
         </dt>

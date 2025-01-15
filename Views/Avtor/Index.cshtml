@@ -1,4 +1,4 @@
-@model IEnumerable<AVTOR>
+@model IEnumerable<E_knjiznica.Models.AVTOR>
 
 @{
     ViewData["Title"] = "Index";
@@ -12,6 +12,9 @@
 <table class="table">
     <thead>
         <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Oseba)
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.Pseudonim)
             </th>
@@ -27,6 +30,9 @@
     <tbody>
 @foreach (var item in Model) {
         <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Oseba.Ime)
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Pseudonim)
             </td>

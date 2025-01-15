@@ -8,7 +8,6 @@ using Microsoft.EntityFrameworkCore;
 using E_knjiznica.Data;
 using E_knjiznica.Models;
 
-
 namespace E_knjiznica.Controllers
 {
     public class AvtorController : Controller
@@ -23,7 +22,8 @@ namespace E_knjiznica.Controllers
         // GET: Avtor
         public async Task<IActionResult> Index()
         {
-            return View(await _context.AVTOR.ToListAsync());
+            var libraryContext = _context.AVTOR.Include(a => a.Oseba);
+            return View(await libraryContext.ToListAsync());
         }
 
         // GET: Avtor/Details/5
@@ -35,6 +35,7 @@ namespace E_knjiznica.Controllers
             }
 
             var aVTOR = await _context.AVTOR
+                .Include(a => a.Oseba)
                 .FirstOrDefaultAsync(m => m.ID_osebe == id);
             if (aVTOR == null)
             {
@@ -47,6 +48,7 @@ namespace E_knjiznica.Controllers
         // GET: Avtor/Create
         public IActionResult Create()
         {
+            ViewData["ID_osebe"] = new SelectList(_context.OSEBA, "ID_osebe", "Ime");
             return View();
         }
 
@@ -63,6 +65,7 @@ namespace E_knjiznica.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["ID_osebe"] = new SelectList(_context.OSEBA, "ID_osebe", "Ime", aVTOR.ID_osebe);
             return View(aVTOR);
         }
 
@@ -79,6 +82,7 @@ namespace E_knjiznica.Controllers
             {
                 return NotFound();
             }
+            ViewData["ID_osebe"] = new SelectList(_context.OSEBA, "ID_osebe", "Ime", aVTOR.ID_osebe);
             return View(aVTOR);
         }
 
@@ -114,6 +118,7 @@ namespace E_knjiznica.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["ID_osebe"] = new SelectList(_context.OSEBA, "ID_osebe", "Ime", aVTOR.ID_osebe);
             return View(aVTOR);
         }
 
@@ -126,6 +131,7 @@ namespace E_knjiznica.Controllers
             }
 
             var aVTOR = await _context.AVTOR
+                .Include(a => a.Oseba)
                 .FirstOrDefaultAsync(m => m.ID_osebe == id);
             if (aVTOR == null)
             {

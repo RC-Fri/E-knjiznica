@@ -22,16 +22,12 @@ namespace E_knjiznica.Controllers
         // GET: Naslov
         public async Task<IActionResult> Index()
         {
-            var libraryContext = await _context.NASLOV
-                .Include(n => n.Clan)
-                .Include(n => n.Posta)
-                .ToListAsync();
-
-            return View(libraryContext);
+            var libraryContext = _context.NASLOV.Include(n => n.Clan).Include(n => n.Posta);
+            return View(await libraryContext.ToListAsync());
         }
 
         // GET: Naslov/Details/5
-        public async Task<IActionResult> Details(string id)
+        public async Task<IActionResult> Details(decimal? id)
         {
             if (id == null)
             {
@@ -41,7 +37,7 @@ namespace E_knjiznica.Controllers
             var nASLOV = await _context.NASLOV
                 .Include(n => n.Clan)
                 .Include(n => n.Posta)
-                .FirstOrDefaultAsync(m => m.Postna_stevilka.ToString() == id);
+                .FirstOrDefaultAsync(m => m.Postna_stevilka == id);
             if (nASLOV == null)
             {
                 return NotFound();
@@ -54,7 +50,7 @@ namespace E_knjiznica.Controllers
         public IActionResult Create()
         {
             ViewData["ID_osebe"] = new SelectList(_context.CLAN, "ID_osebe", "ID_osebe");
-            ViewData["Postna_stevilka"] = new SelectList(_context.POSTA, "Postna_stevilka", "Postna_stevilka");
+            ViewData["Postna_stevilka"] = new SelectList(_context.POSTA, "Postna_stevilka", "Kraj");
             return View();
         }
 
@@ -72,12 +68,12 @@ namespace E_knjiznica.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["ID_osebe"] = new SelectList(_context.CLAN, "ID_osebe", "ID_osebe", nASLOV.ID_osebe);
-            ViewData["Postna_stevilka"] = new SelectList(_context.POSTA, "Postna_stevilka", "Postna_stevilka", nASLOV.Postna_stevilka);
+            ViewData["Postna_stevilka"] = new SelectList(_context.POSTA, "Postna_stevilka", "Kraj", nASLOV.Postna_stevilka);
             return View(nASLOV);
         }
 
         // GET: Naslov/Edit/5
-        public async Task<IActionResult> Edit(string id)
+        public async Task<IActionResult> Edit(decimal? id)
         {
             if (id == null)
             {
@@ -90,7 +86,7 @@ namespace E_knjiznica.Controllers
                 return NotFound();
             }
             ViewData["ID_osebe"] = new SelectList(_context.CLAN, "ID_osebe", "ID_osebe", nASLOV.ID_osebe);
-            ViewData["Postna_stevilka"] = new SelectList(_context.POSTA, "Postna_stevilka", "Postna_stevilka", nASLOV.Postna_stevilka);
+            ViewData["Postna_stevilka"] = new SelectList(_context.POSTA, "Postna_stevilka", "Kraj", nASLOV.Postna_stevilka);
             return View(nASLOV);
         }
 
@@ -99,9 +95,9 @@ namespace E_knjiznica.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("Postna_stevilka,Ulica,Hisna_stevilka,ID_osebe")] NASLOV nASLOV)
+        public async Task<IActionResult> Edit(decimal id, [Bind("Postna_stevilka,Ulica,Hisna_stevilka,ID_osebe")] NASLOV nASLOV)
         {
-            if (id != nASLOV.Postna_stevilka.ToString())
+            if (id != nASLOV.Postna_stevilka)
             {
                 return NotFound();
             }
@@ -115,7 +111,7 @@ namespace E_knjiznica.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!NASLOVExists(nASLOV.Postna_stevilka.ToString()))
+                    if (!NASLOVExists(nASLOV.Postna_stevilka))
                     {
                         return NotFound();
                     }
@@ -127,12 +123,12 @@ namespace E_knjiznica.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["ID_osebe"] = new SelectList(_context.CLAN, "ID_osebe", "ID_osebe", nASLOV.ID_osebe);
-            ViewData["Postna_stevilka"] = new SelectList(_context.POSTA, "Postna_stevilka", "Postna_stevilka", nASLOV.Postna_stevilka);
+            ViewData["Postna_stevilka"] = new SelectList(_context.POSTA, "Postna_stevilka", "Kraj", nASLOV.Postna_stevilka);
             return View(nASLOV);
         }
 
         // GET: Naslov/Delete/5
-        public async Task<IActionResult> Delete(string id)
+        public async Task<IActionResult> Delete(decimal? id)
         {
             if (id == null)
             {
@@ -142,7 +138,7 @@ namespace E_knjiznica.Controllers
             var nASLOV = await _context.NASLOV
                 .Include(n => n.Clan)
                 .Include(n => n.Posta)
-                .FirstOrDefaultAsync(m => m.Postna_stevilka.ToString() == id);
+                .FirstOrDefaultAsync(m => m.Postna_stevilka == id);
             if (nASLOV == null)
             {
                 return NotFound();
@@ -154,7 +150,7 @@ namespace E_knjiznica.Controllers
         // POST: Naslov/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(string id)
+        public async Task<IActionResult> DeleteConfirmed(decimal id)
         {
             var nASLOV = await _context.NASLOV.FindAsync(id);
             if (nASLOV != null)
@@ -166,10 +162,9 @@ namespace E_knjiznica.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool NASLOVExists(string id)
+        private bool NASLOVExists(decimal id)
         {
-            return _context.NASLOV.Any(e => e.Postna_stevilka.ToString() == id);
+            return _context.NASLOV.Any(e => e.Postna_stevilka == id);
         }
-
     }
 }
