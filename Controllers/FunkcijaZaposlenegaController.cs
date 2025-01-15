@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using E_knjiznica.Data;
+using E_knjiznica.Models;
 
 namespace E_knjiznica.Controllers
 {
