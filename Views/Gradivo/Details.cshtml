@@ -1,0 +1,54 @@
+@model E_knjiznica.Models.GRADIVO
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>GRADIVO</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TipGradiva)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TipGradiva.Naziv)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Zalozba)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Zalozba.Naziv)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.StatusGradiva)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.StatusGradiva.Naziv)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Podruznica)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Podruznica.ID_podruznice)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Naziv)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Naziv)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Datum_izdaje)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Datum_izdaje)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Inventarna_stevilka">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

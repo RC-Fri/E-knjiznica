@@ -1,0 +1,66 @@
+@model E_knjiznica.Models.OBDELAVA_GRADIV
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>OBDELAVA_GRADIV</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TipObdelave)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TipObdelave.Naziv)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Gradivo)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Gradivo.Naziv)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Zaposlen)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Zaposlen.ID_osebe)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Clan)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Clan.ID_osebe)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Datum_obdelave)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Datum_obdelave)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Datum_od)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Datum_od)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Datum_do)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Datum_do)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Obracun)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Obracun)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.ID_obdelave">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

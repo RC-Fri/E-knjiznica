@@ -1,0 +1,66 @@
+@model E_knjiznica.Models.OBDELAVA_GRADIV
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>OBDELAVA_GRADIV</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ID_obdelave" />
+            <div class="form-group">
+                <label asp-for="ID_tip_obdelave" class="control-label"></label>
+                <select asp-for="ID_tip_obdelave" class="form-control" asp-items="ViewBag.ID_tip_obdelave"></select>
+                <span asp-validation-for="ID_tip_obdelave" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Inventarna_stevilka" class="control-label"></label>
+                <select asp-for="Inventarna_stevilka" class="form-control" asp-items="ViewBag.Inventarna_stevilka"></select>
+                <span asp-validation-for="Inventarna_stevilka" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ID_zaposlen" class="control-label"></label>
+                <select asp-for="ID_zaposlen" class="form-control" asp-items="ViewBag.ID_zaposlen"></select>
+                <span asp-validation-for="ID_zaposlen" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ID_clan" class="control-label"></label>
+                <select asp-for="ID_clan" class="form-control" asp-items="ViewBag.ID_clan"></select>
+                <span asp-validation-for="ID_clan" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Datum_obdelave" class="control-label"></label>
+                <input asp-for="Datum_obdelave" class="form-control" />
+                <span asp-validation-for="Datum_obdelave" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Datum_od" class="control-label"></label>
+                <input asp-for="Datum_od" class="form-control" />
+                <span asp-validation-for="Datum_od" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Datum_do" class="control-label"></label>
+                <input asp-for="Datum_do" class="form-control" />
+                <span asp-validation-for="Datum_do" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Obracun" class="control-label"></label>
+                <input asp-for="Obracun" class="form-control" />
+                <span asp-validation-for="Obracun" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

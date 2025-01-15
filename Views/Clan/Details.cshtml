@@ -1,0 +1,54 @@
+@model E_knjiznica.Models.CLAN
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>CLAN</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Oseba)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Oseba.Ime)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.KategorijaClana)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.KategorijaClana.Opis)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.GDPR)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.GDPR)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.E_posta)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.E_posta)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Informiranje_preko_e_poste)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Informiranje_preko_e_poste)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Konec_clanstva)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Konec_clanstva)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.ID_osebe">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

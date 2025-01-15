@@ -1,0 +1,77 @@
+@model IEnumerable<E_knjiznica.Models.OBDELAVA_GRADIV>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TipObdelave)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Gradivo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Zaposlen)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Clan)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Datum_obdelave)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Datum_od)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Datum_do)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Obracun)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TipObdelave.Naziv)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Gradivo.Naziv)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Zaposlen.ID_osebe)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Clan.ID_osebe)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Datum_obdelave)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Datum_od)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Datum_do)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Obracun)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ID_obdelave">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ID_obdelave">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ID_obdelave">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

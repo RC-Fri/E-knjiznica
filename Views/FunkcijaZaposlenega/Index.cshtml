@@ -1,0 +1,41 @@
+@model IEnumerable<E_knjiznica.Models.FUNKCIJA_ZAPOSLENEGA>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Funkcija)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Opis_dela)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Funkcija)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Opis_dela)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ID_funkcija">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ID_funkcija">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ID_funkcija">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
