@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using E_knjiznica.Data;
 using E_knjiznica.Models;
+using web.Filters;
 
 namespace E_knjiznica.Controllers_Api
 {
@@ -86,6 +87,7 @@ namespace E_knjiznica.Controllers_Api
 
         // DELETE: api/GradivoApi/5
         [HttpDelete("{id}")]
+        [ApiKeyAuth]
         public async Task<IActionResult> DeleteGRADIVO(int id)
         {
             var gRADIVO = await _context.GRADIVO.FindAsync(id);
