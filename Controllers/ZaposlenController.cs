@@ -21,7 +21,7 @@ namespace E_knjiznica.Controllers
         // GET: Zaposlen
         public async Task<IActionResult> Index()
         {
-            var libraryContext = _context.ZAPOSLEN.Include(z => z.Funkcija);
+            var libraryContext = _context.ZAPOSLEN.Include(z => z.Funkcija).Include(z => z.Oseba);
             return View(await libraryContext.ToListAsync());
         }
 
@@ -35,6 +35,7 @@ namespace E_knjiznica.Controllers
 
             var zAPOSLEN = await _context.ZAPOSLEN
                 .Include(z => z.Funkcija)
+                .Include(z => z.Oseba)
                 .FirstOrDefaultAsync(m => m.ID_osebe == id);
             if (zAPOSLEN == null)
             {
@@ -48,6 +49,7 @@ namespace E_knjiznica.Controllers
         public IActionResult Create()
         {
             ViewData["ID_funkcija"] = new SelectList(_context.FUNKCIJA_ZAPOSLENEGA, "ID_funkcija", "Funkcija");
+            ViewData["ID_osebe"] = new SelectList(_context.OSEBA, "ID_osebe", "Ime");
             return View();
         }
 
@@ -56,7 +58,7 @@ namespace E_knjiznica.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID_osebe,ID_funkcija,Placa,Uporabnisko_ime,Geslo")] ZAPOSLEN zAPOSLEN)
+        public async Task<IActionResult> Create([Bind("ID_osebe,ID_funkcija,Placa")] ZAPOSLEN zAPOSLEN)
         {
             if (ModelState.IsValid)
             {
@@ -65,6 +67,7 @@ namespace E_knjiznica.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["ID_funkcija"] = new SelectList(_context.FUNKCIJA_ZAPOSLENEGA, "ID_funkcija", "Funkcija", zAPOSLEN.ID_funkcija);
+            ViewData["ID_osebe"] = new SelectList(_context.OSEBA, "ID_osebe", "Ime", zAPOSLEN.ID_osebe);
             return View(zAPOSLEN);
         }
 
@@ -82,6 +85,7 @@ namespace E_knjiznica.Controllers
                 return NotFound();
             }
             ViewData["ID_funkcija"] = new SelectList(_context.FUNKCIJA_ZAPOSLENEGA, "ID_funkcija", "Funkcija", zAPOSLEN.ID_funkcija);
+            ViewData["ID_osebe"] = new SelectList(_context.OSEBA, "ID_osebe", "Ime", zAPOSLEN.ID_osebe);
             return View(zAPOSLEN);
         }
 
@@ -90,7 +94,7 @@ namespace E_knjiznica.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID_osebe,ID_funkcija,Placa,Uporabnisko_ime,Geslo")] ZAPOSLEN zAPOSLEN)
+        public async Task<IActionResult> Edit(int id, [Bind("ID_osebe,ID_funkcija,Placa")] ZAPOSLEN zAPOSLEN)
         {
             if (id != zAPOSLEN.ID_osebe)
             {
@@ -118,6 +122,7 @@ namespace E_knjiznica.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["ID_funkcija"] = new SelectList(_context.FUNKCIJA_ZAPOSLENEGA, "ID_funkcija", "Funkcija", zAPOSLEN.ID_funkcija);
+            ViewData["ID_osebe"] = new SelectList(_context.OSEBA, "ID_osebe", "Ime", zAPOSLEN.ID_osebe);
             return View(zAPOSLEN);
         }
 
@@ -131,6 +136,7 @@ namespace E_knjiznica.Controllers
 
             var zAPOSLEN = await _context.ZAPOSLEN
                 .Include(z => z.Funkcija)
+                .Include(z => z.Oseba)
                 .FirstOrDefaultAsync(m => m.ID_osebe == id);
             if (zAPOSLEN == null)
             {

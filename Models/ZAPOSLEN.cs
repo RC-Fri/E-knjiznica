@@ -6,6 +6,8 @@ public class ZAPOSLEN
 {
     [Key]
     public int ID_osebe { get; set; }
+    
+    [ForeignKey(nameof(ID_osebe))]
     public OSEBA Oseba { get; set; }
 
     [ForeignKey("Funkcija")]
@@ -13,14 +15,6 @@ public class ZAPOSLEN
     public FUNKCIJA_ZAPOSLENEGA Funkcija { get; set; }
 
     public decimal Placa { get; set; }
-
-    [Required]
-    [StringLength(20)]
-    public string Uporabnisko_ime { get; set; }
-
-    [Required]
-    [StringLength(20)]
-    public string Geslo { get; set; }
 
     public ICollection<dela_v> Dela_V { get; set; }
     public ICollection<OBDELAVA_GRADIV> Obdelave { get; set; }

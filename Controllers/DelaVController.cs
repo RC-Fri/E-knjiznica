@@ -36,7 +36,7 @@ namespace E_knjiznica.Controllers
             var dela_v = await _context.dela_v
                 .Include(d => d.Podruznica)
                 .Include(d => d.Zaposlen)
-                .FirstOrDefaultAsync(m => m.ID_zaposlen == id);
+                .FirstOrDefaultAsync(m => m.ID_osebe == id);
             if (dela_v == null)
             {
                 return NotFound();
@@ -49,7 +49,7 @@ namespace E_knjiznica.Controllers
         public IActionResult Create()
         {
             ViewData["ID_podruznice"] = new SelectList(_context.PODRUZNICA, "ID_podruznice", "ID_podruznice");
-            ViewData["ID_zaposlen"] = new SelectList(_context.ZAPOSLEN, "ID_osebe", "Geslo");
+            ViewData["ID_osebe"] = new SelectList(_context.ZAPOSLEN, "ID_osebe", "ID_osebe");
             return View();
         }
 
@@ -58,7 +58,7 @@ namespace E_knjiznica.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,ID_zaposlen,ID_podruznice,Datum_zaposlitve,Datum_odhoda")] dela_v dela_v)
+        public async Task<IActionResult> Create([Bind("ID_osebe,ID_podruznice")] dela_v dela_v)
         {
             if (ModelState.IsValid)
             {
@@ -67,7 +67,7 @@ namespace E_knjiznica.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["ID_podruznice"] = new SelectList(_context.PODRUZNICA, "ID_podruznice", "ID_podruznice", dela_v.ID_podruznice);
-            ViewData["ID_zaposlen"] = new SelectList(_context.ZAPOSLEN, "ID_osebe", "Geslo", dela_v.ID_zaposlen);
+            ViewData["ID_osebe"] = new SelectList(_context.ZAPOSLEN, "ID_osebe", "ID_osebe", dela_v.ID_osebe);
             return View(dela_v);
         }
 
@@ -85,7 +85,7 @@ namespace E_knjiznica.Controllers
                 return NotFound();
             }
             ViewData["ID_podruznice"] = new SelectList(_context.PODRUZNICA, "ID_podruznice", "ID_podruznice", dela_v.ID_podruznice);
-            ViewData["ID_zaposlen"] = new SelectList(_context.ZAPOSLEN, "ID_osebe", "Geslo", dela_v.ID_zaposlen);
+            ViewData["ID_osebe"] = new SelectList(_context.ZAPOSLEN, "ID_osebe", "ID_osebe", dela_v.ID_osebe);
             return View(dela_v);
         }
 
@@ -94,9 +94,9 @@ namespace E_knjiznica.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,ID_zaposlen,ID_podruznice,Datum_zaposlitve,Datum_odhoda")] dela_v dela_v)
+        public async Task<IActionResult> Edit(int id, [Bind("ID_osebe,ID_podruznice")] dela_v dela_v)
         {
-            if (id != dela_v.ID_zaposlen)
+            if (id != dela_v.ID_osebe)
             {
                 return NotFound();
             }
@@ -110,7 +110,7 @@ namespace E_knjiznica.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!dela_vExists(dela_v.ID_zaposlen))
+                    if (!dela_vExists(dela_v.ID_osebe))
                     {
                         return NotFound();
                     }
@@ -122,7 +122,7 @@ namespace E_knjiznica.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["ID_podruznice"] = new SelectList(_context.PODRUZNICA, "ID_podruznice", "ID_podruznice", dela_v.ID_podruznice);
-            ViewData["ID_zaposlen"] = new SelectList(_context.ZAPOSLEN, "ID_osebe", "Geslo", dela_v.ID_zaposlen);
+            ViewData["ID_osebe"] = new SelectList(_context.ZAPOSLEN, "ID_osebe", "ID_osebe", dela_v.ID_osebe);
             return View(dela_v);
         }
 
@@ -137,7 +137,7 @@ namespace E_knjiznica.Controllers
             var dela_v = await _context.dela_v
                 .Include(d => d.Podruznica)
                 .Include(d => d.Zaposlen)
-                .FirstOrDefaultAsync(m => m.ID_zaposlen == id);
+                .FirstOrDefaultAsync(m => m.ID_osebe == id);
             if (dela_v == null)
             {
                 return NotFound();
@@ -163,7 +163,7 @@ namespace E_knjiznica.Controllers
 
         private bool dela_vExists(int id)
         {
-            return _context.dela_v.Any(e => e.ID_zaposlen == id);
+            return _context.dela_v.Any(e => e.ID_osebe == id);
         }
     }
 }

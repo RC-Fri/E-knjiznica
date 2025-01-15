@@ -51,7 +51,7 @@ namespace E_knjiznica.Data
 
             modelBuilder.Entity<je_kreiral>()
                 .HasOne(j => j.Avtor)
-                .WithMany()
+                .WithMany(a => a.Kreacije)
                 .HasForeignKey(j => j.ID_osebe);
 
             modelBuilder.Entity<je_kreiral>()
@@ -84,11 +84,11 @@ namespace E_knjiznica.Data
 
 
             // dela_v primary key and relationships
-            modelBuilder.Entity<dela_v>().HasKey(d => new { d.ID_zaposlen, d.ID_podruznice });
+            modelBuilder.Entity<dela_v>().HasKey(d => new { d.ID_osebe, d.ID_podruznice });
             modelBuilder.Entity<dela_v>()
                 .HasOne(d => d.Zaposlen)
                 .WithMany(z => z.Dela_V)
-                .HasForeignKey(d => d.ID_zaposlen);
+                .HasForeignKey(d => d.ID_osebe);
             modelBuilder.Entity<dela_v>()
                 .HasOne(d => d.Podruznica)
                 .WithMany(p => p.Zaposleni)
@@ -115,6 +115,12 @@ namespace E_knjiznica.Data
                 .HasOne(a => a.Oseba)
                 .WithOne()
                 .HasForeignKey<AVTOR>(a => a.ID_osebe);
+
+            //ZAPOSLEN relationships
+            modelBuilder.Entity<ZAPOSLEN>()
+                .HasOne(z => z.Oseba)
+                .WithOne()
+                .HasForeignKey<ZAPOSLEN>(z => z.ID_osebe);
         }
     }
 }

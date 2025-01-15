@@ -12,23 +12,8 @@
     <div class="col-md-4">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="ID" class="control-label"></label>
-                <input asp-for="ID" class="form-control" />
-                <span asp-validation-for="ID" class="text-danger"></span>
-            </div>
-            <input type="hidden" asp-for="ID_zaposlen" />
+            <input type="hidden" asp-for="ID_osebe" />
             <input type="hidden" asp-for="ID_podruznice" />
-            <div class="form-group">
-                <label asp-for="Datum_zaposlitve" class="control-label"></label>
-                <input asp-for="Datum_zaposlitve" class="form-control" />
-                <span asp-validation-for="Datum_zaposlitve" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Datum_odhoda" class="control-label"></label>
-                <input asp-for="Datum_odhoda" class="form-control" />
-                <span asp-validation-for="Datum_odhoda" class="text-danger"></span>
-            </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>
