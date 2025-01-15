@@ -7,16 +7,15 @@ public class OSEBA
     [Key]
     public int ID_osebe { get; set; }
 
-    [Required]
     [StringLength(20)]
-    public string Ime { get; set; }
+    public string? Ime { get; set; }
 
-    [Required]
     [StringLength(20)]
-    public string Priimek { get; set; }
+    public string? Priimek { get; set; }
 
     [StringLength(20)]
     public string Uporabnisko_ime { get; set; }
+
     [StringLength(20)]
     public string Geslo { get; set; }
 

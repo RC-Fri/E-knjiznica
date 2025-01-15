@@ -15,6 +15,7 @@ public class CLAN
 
     public short GDPR { get; set; }
 
+    //TODO: Should be 256
     [StringLength(20)]
     public string E_posta { get; set; }
 

@@ -42,6 +42,22 @@ namespace E_knjiznica.Controllers_Api
             return oSEBA;
         }
 
+        
+        [HttpGet("login/username={username}password={password}")]
+        public async Task<ActionResult<OSEBA>> GetOSEBA(string username, string password)
+        {
+            var oSEBA = await _context.OSEBA
+                .FirstOrDefaultAsync(o => o.Uporabnisko_ime == username && o.Geslo == password);
+
+            if (oSEBA == null)
+            {
+                return NotFound();
+            }
+
+            return oSEBA;
+        }
+
+
         // PUT: api/OsebaApi/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
