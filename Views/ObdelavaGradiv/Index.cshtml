@@ -1,4 +1,4 @@
-@model IEnumerable<OBDELAVA_GRADIV>
+@model IEnumerable<E_knjiznica.Models.OBDELAVA_GRADIV>
 
 @{
     ViewData["Title"] = "Index";
@@ -47,6 +47,9 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Gradivo.Naziv)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Zaposlen.ID_osebe)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Clan.ID_osebe)

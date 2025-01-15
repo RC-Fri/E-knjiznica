@@ -54,7 +54,7 @@ namespace E_knjiznica.Controllers
             ViewData["ID_clan"] = new SelectList(_context.CLAN, "ID_osebe", "ID_osebe");
             ViewData["Inventarna_stevilka"] = new SelectList(_context.GRADIVO, "Inventarna_stevilka", "Naziv");
             ViewData["ID_tip_obdelave"] = new SelectList(_context.TIP_OBDELAVE, "ID_tip_obdelave", "Naziv");
-            ViewData["ID_zaposlen"] = new SelectList(_context.ZAPOSLEN, "ID_osebe", "Geslo");
+            ViewData["ID_zaposlen"] = new SelectList(_context.ZAPOSLEN, "ID_osebe", "ID_osebe");
             return View();
         }
 
@@ -74,7 +74,7 @@ namespace E_knjiznica.Controllers
             ViewData["ID_clan"] = new SelectList(_context.CLAN, "ID_osebe", "ID_osebe", oBDELAVA_GRADIV.ID_clan);
             ViewData["Inventarna_stevilka"] = new SelectList(_context.GRADIVO, "Inventarna_stevilka", "Naziv", oBDELAVA_GRADIV.Inventarna_stevilka);
             ViewData["ID_tip_obdelave"] = new SelectList(_context.TIP_OBDELAVE, "ID_tip_obdelave", "Naziv", oBDELAVA_GRADIV.ID_tip_obdelave);
-            ViewData["ID_zaposlen"] = new SelectList(_context.ZAPOSLEN, "ID_osebe", "Geslo", oBDELAVA_GRADIV.ID_zaposlen);
+            ViewData["ID_zaposlen"] = new SelectList(_context.ZAPOSLEN, "ID_osebe", "ID_osebe", oBDELAVA_GRADIV.ID_zaposlen);
             return View(oBDELAVA_GRADIV);
         }
 
@@ -94,7 +94,7 @@ namespace E_knjiznica.Controllers
             ViewData["ID_clan"] = new SelectList(_context.CLAN, "ID_osebe", "ID_osebe", oBDELAVA_GRADIV.ID_clan);
             ViewData["Inventarna_stevilka"] = new SelectList(_context.GRADIVO, "Inventarna_stevilka", "Naziv", oBDELAVA_GRADIV.Inventarna_stevilka);
             ViewData["ID_tip_obdelave"] = new SelectList(_context.TIP_OBDELAVE, "ID_tip_obdelave", "Naziv", oBDELAVA_GRADIV.ID_tip_obdelave);
-            ViewData["ID_zaposlen"] = new SelectList(_context.ZAPOSLEN, "ID_osebe", "Geslo", oBDELAVA_GRADIV.ID_zaposlen);
+            ViewData["ID_zaposlen"] = new SelectList(_context.ZAPOSLEN, "ID_osebe", "ID_osebe", oBDELAVA_GRADIV.ID_zaposlen);
             return View(oBDELAVA_GRADIV);
         }
 
@@ -133,7 +133,7 @@ namespace E_knjiznica.Controllers
             ViewData["ID_clan"] = new SelectList(_context.CLAN, "ID_osebe", "ID_osebe", oBDELAVA_GRADIV.ID_clan);
             ViewData["Inventarna_stevilka"] = new SelectList(_context.GRADIVO, "Inventarna_stevilka", "Naziv", oBDELAVA_GRADIV.Inventarna_stevilka);
             ViewData["ID_tip_obdelave"] = new SelectList(_context.TIP_OBDELAVE, "ID_tip_obdelave", "Naziv", oBDELAVA_GRADIV.ID_tip_obdelave);
-            ViewData["ID_zaposlen"] = new SelectList(_context.ZAPOSLEN, "ID_osebe", "Geslo", oBDELAVA_GRADIV.ID_zaposlen);
+            ViewData["ID_zaposlen"] = new SelectList(_context.ZAPOSLEN, "ID_osebe", "ID_osebe", oBDELAVA_GRADIV.ID_zaposlen);
             return View(oBDELAVA_GRADIV);
         }
 

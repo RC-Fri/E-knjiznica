@@ -1,4 +1,4 @@
-@model IEnumerable<NASLOV>
+@model IEnumerable<E_knjiznica.Models.NASLOV>
 
 @{
     ViewData["Title"] = "Index";
@@ -25,7 +25,7 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Posta.Postna_stevilka)
+                @Html.DisplayFor(modelItem => item.Posta.Kraj)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Clan.ID_osebe)

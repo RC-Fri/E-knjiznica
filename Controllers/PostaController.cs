@@ -26,7 +26,7 @@ namespace E_knjiznica.Controllers
         }
 
         // GET: Posta/Details/5
-        public async Task<IActionResult> Details(string id)
+        public async Task<IActionResult> Details(decimal? id)
         {
             if (id == null)
             {
@@ -34,7 +34,7 @@ namespace E_knjiznica.Controllers
             }
 
             var pOSTA = await _context.POSTA
-                .FirstOrDefaultAsync(m => m.Postna_stevilka.ToString() == id);
+                .FirstOrDefaultAsync(m => m.Postna_stevilka == id);
             if (pOSTA == null)
             {
                 return NotFound();
@@ -54,7 +54,7 @@ namespace E_knjiznica.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Postna_stevilka,Naslov")] POSTA pOSTA)
+        public async Task<IActionResult> Create([Bind("Postna_stevilka,Kraj")] POSTA pOSTA)
         {
             if (ModelState.IsValid)
             {
@@ -66,7 +66,7 @@ namespace E_knjiznica.Controllers
         }
 
         // GET: Posta/Edit/5
-        public async Task<IActionResult> Edit(string id)
+        public async Task<IActionResult> Edit(decimal? id)
         {
             if (id == null)
             {
@@ -86,9 +86,9 @@ namespace E_knjiznica.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("Postna_stevilka,Naslov")] POSTA pOSTA)
+        public async Task<IActionResult> Edit(decimal id, [Bind("Postna_stevilka,Kraj")] POSTA pOSTA)
         {
-            if (id != pOSTA.Postna_stevilka.ToString())
+            if (id != pOSTA.Postna_stevilka)
             {
                 return NotFound();
             }
@@ -102,7 +102,7 @@ namespace E_knjiznica.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!POSTAExists(pOSTA.Postna_stevilka.ToString()))
+                    if (!POSTAExists(pOSTA.Postna_stevilka))
                     {
                         return NotFound();
                     }
@@ -117,7 +117,7 @@ namespace E_knjiznica.Controllers
         }
 
         // GET: Posta/Delete/5
-        public async Task<IActionResult> Delete(string id)
+        public async Task<IActionResult> Delete(decimal? id)
         {
             if (id == null)
             {
@@ -125,7 +125,7 @@ namespace E_knjiznica.Controllers
             }
 
             var pOSTA = await _context.POSTA
-                .FirstOrDefaultAsync(m => m.Postna_stevilka.ToString() == id);
+                .FirstOrDefaultAsync(m => m.Postna_stevilka == id);
             if (pOSTA == null)
             {
                 return NotFound();
@@ -137,7 +137,7 @@ namespace E_knjiznica.Controllers
         // POST: Posta/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(string id)
+        public async Task<IActionResult> DeleteConfirmed(decimal id)
         {
             var pOSTA = await _context.POSTA.FindAsync(id);
             if (pOSTA != null)
@@ -149,9 +149,9 @@ namespace E_knjiznica.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool POSTAExists(string id)
+        private bool POSTAExists(decimal id)
         {
-            return _context.POSTA.Any(e => e.Postna_stevilka.ToString() == id);
+            return _context.POSTA.Any(e => e.Postna_stevilka == id);
         }
     }
 }

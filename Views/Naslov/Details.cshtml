@@ -1,4 +1,4 @@
-@model NASLOV
+@model E_knjiznica.Models.NASLOV
 
 @{
     ViewData["Title"] = "Details";
@@ -14,7 +14,7 @@
             @Html.DisplayNameFor(model => model.Posta)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Posta.Postna_stevilka)
+            @Html.DisplayFor(model => model.Posta.Kraj)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Clan)
