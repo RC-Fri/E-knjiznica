@@ -50,6 +50,7 @@ namespace E_knjiznica.Controllers
         }
 
         // GET: Gradivo/Create
+        [Authorize]
         public IActionResult Create()
         {
             ViewData["ID_podruznice"] = new SelectList(_context.PODRUZNICA, "ID_podruznice", "ID_podruznice");
@@ -80,6 +81,7 @@ namespace E_knjiznica.Controllers
         }
 
         // GET: Gradivo/Edit/5
+        [Authorize]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -139,6 +141,7 @@ namespace E_knjiznica.Controllers
         }
 
         // GET: Gradivo/Delete/5
+        [Authorize]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
