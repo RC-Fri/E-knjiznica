@@ -57,6 +57,26 @@ namespace E_knjiznica.Controllers_Api
             return oSEBA;
         }
 
+        [HttpPost("changePassword")]
+        public async Task<ActionResult> ChangePassword(string username, string oldPassword, string newPassword)
+        {
+            var oSEBA = await _context.OSEBA
+                .FirstOrDefaultAsync(o => o.Uporabnisko_ime == username && o.Geslo == oldPassword);
+
+            if (oSEBA == null)
+            {
+                return NotFound(new { message = "Invalid username or old password" });
+            }
+
+            oSEBA.Geslo = newPassword;
+
+            _context.OSEBA.Update(oSEBA);
+            await _context.SaveChangesAsync();
+
+            return Ok(new { success = true, message = "Password changed successfully" });
+        }
+
+
 
         // PUT: api/OsebaApi/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
