@@ -7,11 +7,13 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using E_knjiznica.Data;
 using E_knjiznica.Models;
+using web.Filters;
 
 namespace E_knjiznica.Controllers_Api
 {
     [Route("api/[controller]")]
     [ApiController]
+    [ApiKeyAuth]
     public class ObdelavaGradivoApiController : ControllerBase
     {
         private readonly LibraryContext _context;
