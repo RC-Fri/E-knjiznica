@@ -34,6 +34,9 @@ namespace E_knjiznica.Data
             // NASLOV primary key and relationships
             modelBuilder.Entity<NASLOV>().HasKey(n => new { n.Postna_stevilka, n.Ulica, n.Hisna_stevilka });
             modelBuilder.Entity<NASLOV>()
+                .Property(n => n.Postna_stevilka)
+                .HasColumnType("decimal(4, 0)");
+            modelBuilder.Entity<NASLOV>()
                 .HasOne(n => n.Posta)
                 .WithMany(p => p.Naslovi)
                 .HasForeignKey(n => n.Postna_stevilka);
@@ -43,7 +46,9 @@ namespace E_knjiznica.Data
                 .HasForeignKey(n => n.ID_osebe);
 
             // je_kreiral primary key and relationships
-            modelBuilder.Entity<je_kreiral>().HasKey(j => new { j.ID_osebe, j.Inventarna_stevilka });
+            modelBuilder.Entity<je_kreiral>()
+                .HasKey(j => new { j.ID_osebe, j.Inventarna_stevilka });
+
             modelBuilder.Entity<je_kreiral>()
                 .HasOne(j => j.Avtor)
                 .WithMany()
@@ -98,6 +103,18 @@ namespace E_knjiznica.Data
                 .HasOne(c => c.KategorijaClana)
                 .WithMany(k => k.Clani)
                 .HasForeignKey(c => c.ID_kategorija_clana);
+            modelBuilder.Entity<CLAN>()
+                .Property(c => c.GDPR)
+                .HasConversion<short>();
+            modelBuilder.Entity<CLAN>()
+                .Property(c => c.Informiranje_preko_e_poste)
+                .HasConversion<short>();
+
+            //AVTOR relationships
+            modelBuilder.Entity<AVTOR>()
+                .HasOne(a => a.Oseba)
+                .WithOne()
+                .HasForeignKey<AVTOR>(a => a.ID_osebe);
         }
     }
 }

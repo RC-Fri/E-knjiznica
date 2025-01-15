@@ -6,6 +6,8 @@ public class AVTOR
 {
     [Key]
     public int ID_osebe { get; set; }
+    
+    [ForeignKey(nameof(ID_osebe))]
     public OSEBA Oseba { get; set; }
 
     [StringLength(20)]

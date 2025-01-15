@@ -33,7 +33,7 @@ namespace E_knjiznica.Controllers
             }
 
             var pOSTA = await _context.POSTA
-                .FirstOrDefaultAsync(m => m.Postna_stevilka == id);
+                .FirstOrDefaultAsync(m => m.Postna_stevilka.ToString() == id);
             if (pOSTA == null)
             {
                 return NotFound();
@@ -87,7 +87,7 @@ namespace E_knjiznica.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(string id, [Bind("Postna_stevilka,Naslov")] POSTA pOSTA)
         {
-            if (id != pOSTA.Postna_stevilka)
+            if (id != pOSTA.Postna_stevilka.ToString())
             {
                 return NotFound();
             }
@@ -101,7 +101,7 @@ namespace E_knjiznica.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!POSTAExists(pOSTA.Postna_stevilka))
+                    if (!POSTAExists(pOSTA.Postna_stevilka.ToString()))
                     {
                         return NotFound();
                     }
@@ -124,7 +124,7 @@ namespace E_knjiznica.Controllers
             }
 
             var pOSTA = await _context.POSTA
-                .FirstOrDefaultAsync(m => m.Postna_stevilka == id);
+                .FirstOrDefaultAsync(m => m.Postna_stevilka.ToString() == id);
             if (pOSTA == null)
             {
                 return NotFound();
@@ -150,7 +150,7 @@ namespace E_knjiznica.Controllers
 
         private bool POSTAExists(string id)
         {
-            return _context.POSTA.Any(e => e.Postna_stevilka == id);
+            return _context.POSTA.Any(e => e.Postna_stevilka.ToString() == id);
         }
     }
 }

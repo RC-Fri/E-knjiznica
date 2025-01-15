@@ -12,12 +12,12 @@ public class CLAN
     public int ID_kategorija_clana { get; set; }
     public KATEGORIJA_CLANA KategorijaClana { get; set; }
 
-    public bool GDPR { get; set; }
+    public short GDPR { get; set; }
 
     [StringLength(20)]
     public string E_posta { get; set; }
 
-    public bool Informiranje_preko_e_poste { get; set; }
+    public short Informiranje_preko_e_poste { get; set; }
 
     [Required]
     public DateTime Konec_clanstva { get; set; }

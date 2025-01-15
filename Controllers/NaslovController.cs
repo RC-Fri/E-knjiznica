@@ -21,8 +21,12 @@ namespace E_knjiznica.Controllers
         // GET: Naslov
         public async Task<IActionResult> Index()
         {
-            var libraryContext = _context.NASLOV.Include(n => n.Clan).Include(n => n.Posta);
-            return View(await libraryContext.ToListAsync());
+            var libraryContext = await _context.NASLOV
+                .Include(n => n.Clan)
+                .Include(n => n.Posta)
+                .ToListAsync();
+
+            return View(libraryContext);
         }
 
         // GET: Naslov/Details/5
@@ -36,7 +40,7 @@ namespace E_knjiznica.Controllers
             var nASLOV = await _context.NASLOV
                 .Include(n => n.Clan)
                 .Include(n => n.Posta)
-                .FirstOrDefaultAsync(m => m.Postna_stevilka == id);
+                .FirstOrDefaultAsync(m => m.Postna_stevilka.ToString() == id);
             if (nASLOV == null)
             {
                 return NotFound();
@@ -96,7 +100,7 @@ namespace E_knjiznica.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(string id, [Bind("Postna_stevilka,Ulica,Hisna_stevilka,ID_osebe")] NASLOV nASLOV)
         {
-            if (id != nASLOV.Postna_stevilka)
+            if (id != nASLOV.Postna_stevilka.ToString())
             {
                 return NotFound();
             }
@@ -110,7 +114,7 @@ namespace E_knjiznica.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!NASLOVExists(nASLOV.Postna_stevilka))
+                    if (!NASLOVExists(nASLOV.Postna_stevilka.ToString()))
                     {
                         return NotFound();
                     }
@@ -137,7 +141,7 @@ namespace E_knjiznica.Controllers
             var nASLOV = await _context.NASLOV
                 .Include(n => n.Clan)
                 .Include(n => n.Posta)
-                .FirstOrDefaultAsync(m => m.Postna_stevilka == id);
+                .FirstOrDefaultAsync(m => m.Postna_stevilka.ToString() == id);
             if (nASLOV == null)
             {
                 return NotFound();
@@ -163,7 +167,8 @@ namespace E_knjiznica.Controllers
 
         private bool NASLOVExists(string id)
         {
-            return _context.NASLOV.Any(e => e.Postna_stevilka == id);
+            return _context.NASLOV.Any(e => e.Postna_stevilka.ToString() == id);
         }
+
     }
 }

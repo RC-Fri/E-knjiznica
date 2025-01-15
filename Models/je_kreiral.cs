@@ -4,8 +4,6 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 public class je_kreiral
 {
-    [Key]
-    public int ID { get; set; }
 
     [ForeignKey("Avtor")]
     public int ID_osebe { get; set; }

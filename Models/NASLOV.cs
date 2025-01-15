@@ -7,19 +7,20 @@ public class NASLOV
 {
     [Key]
     [Column(Order = 0)]
-    public string Postna_stevilka { get; set; }
+    public decimal Postna_stevilka { get; set; }
 
     [Key]
     [Column(Order = 1)]
-    [StringLength(100)]
+    [StringLength(20)]
     public string Ulica { get; set; }
 
     [Key]
     [Column(Order = 2)]
-    [StringLength(10)]
+    [StringLength(5)]
     public string Hisna_stevilka { get; set; }
 
-    public int? ID_osebe { get; set; }
+    [Required]
+    public int ID_osebe { get; set; }
 
     [ForeignKey("Postna_stevilka")]
     public POSTA Posta { get; set; }
