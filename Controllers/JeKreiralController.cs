@@ -58,7 +58,7 @@ namespace E_knjiznica.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,ID_osebe,Inventarna_stevilka,Datum_kreiranja")] je_kreiral je_kreiral)
+        public async Task<IActionResult> Create([Bind("ID_osebe,Inventarna_stevilka")] je_kreiral je_kreiral)
         {
             if (ModelState.IsValid)
             {
@@ -94,7 +94,7 @@ namespace E_knjiznica.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,ID_osebe,Inventarna_stevilka,Datum_kreiranja")] je_kreiral je_kreiral)
+        public async Task<IActionResult> Edit(int id, [Bind("ID_osebe,Inventarna_stevilka")] je_kreiral je_kreiral)
         {
             if (id != je_kreiral.ID_osebe)
             {

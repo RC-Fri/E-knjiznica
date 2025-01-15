@@ -12,7 +12,5 @@ public class je_kreiral
     [ForeignKey("Gradivo")]
     public int Inventarna_stevilka { get; set; }
     public GRADIVO Gradivo { get; set; }
-
-    [Required]
-    public DateTime Datum_kreiranja { get; set; }
 }
+

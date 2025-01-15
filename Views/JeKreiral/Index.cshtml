@@ -18,9 +18,6 @@
             <th>
                 @Html.DisplayNameFor(model => model.Gradivo)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Datum_kreiranja)
-            </th>
             <th></th>
         </tr>
     </thead>
@@ -32,9 +29,6 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Gradivo.Naziv)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Datum_kreiranja)
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
