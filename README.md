@@ -9,12 +9,12 @@ Splošen opis naloge
 Z informacijskim sistemom E-Knjižnica bomo podprli procese na knjižnici. Sistem bo omogočal pregled gradiva knjižnice, opis gradiva, izposojo in rezervacijo gradiva ter pogled nad izposojenimi gradivi od datuma vračila do podaljšanja istega datuma.
 Sam informacijski sistem je razdeljen na spetno aplikacijo, spletne storitve, podatkono bazo in android aplikacijo. Spletna aplikacija in android aplikacija bosta dovolili uporabnikim dovolia dostop do IS, medtem ko bosta spletna storitev in podatkovna baza usposabljala sam sistem.
 
-Spletna stran bo delovala kot portal za člane , zaposlene in goste, medtem ko bo aplikacija samo delovala za uporabnike. Tak sistem bo dovolil da se aplikacija prilagodi članim, saj je predivideno da jo bojo le te uporabljali. Gostje, oziroma obiskovalci spletne strani so podani pogled ter iskanje gradiva ki se nahaja v knjižnici oziroma knjižnicah. Zaposleni imajo seveda večje pravice v sistemu, odvisno od avtorizacije. Te bodo lahko imeli možnosti od dodajanja gradiv, odstranjevanja gradiv, spremembe statusa gradiv, dodajanje članov, obdelovanje zamud in tako dalje.
+Spletna stran bo delovala kot portal za člane , zaposlene in goste, medtem ko bo aplikacija samo delovala za uporabnike. Tak sistem bo dovolil da se aplikacija prilagodi članom, saj je predivideno da jo bojo le ti uporabljali. Gostje, oziroma obiskovalci spletne strani, so podani pogled ter iskanje gradiva, ki se nahaja v knjižnici oziroma knjižnicah. Zaposleni imajo seveda večje pravice v sistemu, odvisno od avtorizacije. Te bodo lahko imeli možnosti od dodajanja gradiv, odstranjevanja gradiv, spremembe statusa gradiv, dodajanje članov, obdelovanje zamud in tako dalje.
 
-Za uspešno delovanje strani in aplikacije seveda rabimo podatkovno baza, katera jih lahko podpira. V podatkovni bazi so predivdene nasledne entitete: Gradivo, Izvod gradiva, Avtor, Član, Izposoja, Rezervacija, Podaljšanje, Zaposleni v knjižnici. Poleg tega tudi rabi procedure za lažji pregled in omogočiti delovanje katerih funkcij – naprimer vnos in zahteve podatkov glede strani in aplikacije, posodobljevanje baze,...
+Za uspešno delovanje strani in aplikacije seveda rabimo podatkovno bazo, katera jih lahko podpira. V podatkovni bazi so predivdene nasledne entitete: Gradivo, Izvod gradiva, Avtor, Član, Izposoja, Rezervacija, Podaljšanje, Zaposleni v knjižnici. Poleg tega tudi rabi procedure za lažji pregled in omogočiti delovanje katerih funkcij – naprimer vnos in zahteve podatkov glede strani in aplikacije, posodobljevanje baze,...
 
 Zaslonske slike grafičnega vmesnika vaše mobilne aplikacije in spletne aplikacije
-Spletna aplikaciaj
+Spletna aplikacija
 ![slika](https://github.com/user-attachments/assets/e7e95cd9-a5fd-475a-8c4c-9e83d448f2b3)
 Slika 1: Prijava
 
@@ -33,7 +33,7 @@ Slika 5: Iskanje
 
 Kratek opis delovanja celotnega sistema
 
-Temelno delovanje je uporaba spletne strani za prijavo ali registracijo članov. Vsi obiskovalci imajo dostop do gradiva knjižnice, člani pa lahko pogledajo svoje gradivo. Zaposleni lahko vpisujejo novo gradivo in obdelujejo z gradivom. Delovanje omogoča C# in .net. Z pomočjo Modelov in podatkovne baze je omogočen preprost in logičen dostop do podatkov nad katerim uporabniki upravljajo. API obstaja za mogočo integracijo z drugimi aplikacijami s pomočjo preproste dokumentacije z Swagger. Za mobilno delovanje je na podatkovno bazo integrirana mobilna aplikacija E-knjiznica-mobilna-aplikacija.
+Temelno delovanje je uporaba spletne strani za prijavo ali registracijo članov. Vsi obiskovalci imajo dostop do gradiva knjižnice, člani pa lahko pogledajo svoje gradivo. Zaposleni lahko vpisujejo novo gradivo in obdelujejo z gradivom. Delovanje omogoča C# in .NET. Z pomočjo Modelov in podatkovne baze je omogočen preprost in logičen dostop do podatkov nad katerim uporabniki upravljajo. API obstaja za mogočo integracijo z drugimi aplikacijami s pomočjo preproste dokumentacije z Swagger. Za mobilno delovanje je na podatkovno bazo integrirana mobilna aplikacija E-knjiznica-mobilna-aplikacija.
 
 Opis nalog, ki jih je izvedel vsak izmed študentov:
 Rok Cigut: Mobilna aplikacija, podatkovna baza, API in Modeli v spletni aplikaciji.
