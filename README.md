@@ -37,6 +37,7 @@ Temelno delovanje je uporaba spletne strani za prijavo ali registracijo članov.
 
 Opis nalog, ki jih je izvedel vsak izmed študentov:
 Rok Cigut: Mobilna aplikacija, podatkovna baza, API in Modeli v spletni aplikaciji.
+Nik Janoš: Azure Cloud, Models, generiranje views in controllerjev, css/html, pomoč pri debug-anju. 
 
 Slika podatkovnega modela:
 ![slika](https://github.com/user-attachments/assets/b7f8e847-d757-4795-a95f-270776944f27)
