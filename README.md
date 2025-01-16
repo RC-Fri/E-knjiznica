@@ -36,7 +36,9 @@ Kratek opis delovanja celotnega sistema
 Temelno delovanje je uporaba spletne strani za prijavo ali registracijo članov. Vsi obiskovalci imajo dostop do gradiva knjižnice, člani pa lahko pogledajo svoje gradivo. Zaposleni lahko vpisujejo novo gradivo in obdelujejo z gradivom. Delovanje omogoča C# in .NET. Z pomočjo Modelov in podatkovne baze je omogočen preprost in logičen dostop do podatkov nad katerim uporabniki upravljajo. API obstaja za mogočo integracijo z drugimi aplikacijami s pomočjo preproste dokumentacije z Swagger. Za mobilno delovanje je na podatkovno bazo integrirana mobilna aplikacija E-knjiznica-mobilna-aplikacija.
 
 Opis nalog, ki jih je izvedel vsak izmed študentov:
+
 Rok Cigut: Mobilna aplikacija, podatkovna baza, API in Modeli v spletni aplikaciji.
+
 Nik Janoš: Azure Cloud, Models, generiranje views in controllerjev, css/html, pomoč pri debug-anju. 
 
 Slika podatkovnega modela:
