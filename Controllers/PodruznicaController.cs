@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using E_knjiznica.Data;
 using E_knjiznica.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace E_knjiznica.Controllers
 {
@@ -46,6 +47,7 @@ namespace E_knjiznica.Controllers
         }
 
         // GET: Podruznica/Create
+        [Authorize]
         public IActionResult Create()
         {
             ViewData["ID_tip_podruznice"] = new SelectList(_context.TIP_PODRUZNICE, "ID_tip_podruznice", "Naziv");
@@ -57,6 +59,7 @@ namespace E_knjiznica.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> Create([Bind("ID_podruznice,ID_tip_podruznice,Posta")] PODRUZNICA pODRUZNICA)
         {
             if (ModelState.IsValid)
@@ -70,6 +73,7 @@ namespace E_knjiznica.Controllers
         }
 
         // GET: Podruznica/Edit/5
+        [Authorize]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -123,6 +127,7 @@ namespace E_knjiznica.Controllers
         }
 
         // GET: Podruznica/Delete/5
+        [Authorize]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
